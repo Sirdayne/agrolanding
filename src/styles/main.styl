@@ -16,9 +16,32 @@ $SEC_COLOR = #6FCF97
     background rgba(0,0,0,0)
     color $SEC_COLOR
 
+.title-prim
+  float left
+  width 100%
+  margin-top 5px
+  font-size 17px
+  font-weight bold
+  font-family Laton
+
+.title-sec
+  float left
+  width 100%
+  margin-top 5px
+  font-size 17px
+  font-weight bold
+  color $SEC_COLOR
+  font-family Laton
+
 @font-face
   font-family 'Lato'
   src url(../assets//fonts/Lato-Light.ttf)
+  font-weight normal
+  font-style normal
+
+@font-face
+  font-family 'Laton'
+  src url(../assets//fonts/Lato-Regular.ttf)
   font-weight normal
   font-style normal
 
@@ -35,13 +58,14 @@ $SEC_COLOR = #6FCF97
   margin 0 auto
   width 80%
   max-width 1450px
+  min-width 1000px
   overflow visible
   &::after
     content ""
     clear: both
     display: table
 
-.main-block
+.main-section
   float left
   width 100%
   position relative
@@ -101,7 +125,7 @@ $SEC_COLOR = #6FCF97
 .main-title
   float left
   width 100%
-  font-size 64px
+  font-size 54px
   margin-top 180px
   color $PRIM_COLOR
   font-weight bold
@@ -118,3 +142,26 @@ $SEC_COLOR = #6FCF97
   float left
   width 100%
   margin-top 70px
+
+.effectiveness-section
+  float left
+  width 100%
+  background $PRIM_COLOR
+  padding 80px 0
+  &-image
+    float left
+    width 50%
+    margin-top 50px
+    img
+      width calc(100% - 200px)
+      height auto
+  &-text
+    float left
+    width 50%
+    margin-top 150px
+    p
+      float left
+      width 100%
+      font-size 17px
+      margin-bottom 20px
+      text-align justify
