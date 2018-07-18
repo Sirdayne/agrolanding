@@ -1,7 +1,29 @@
-$yellow = #FFCC33
+$PRIM_COLOR = #fff
+$SEC_COLOR = #6FCF97
+
+.btn
+  display inline-block
+  font-family Lato
+  padding 12px 40px
+  font-size 16px
+  color $PRIM_COLOR
+  border 1px solid $SEC_COLOR
+  background $SEC_COLOR
+  cursor pointer
+  outline none
+  transition .2s linear
+  &:hover
+    background rgba(0,0,0,0)
+    color $SEC_COLOR
+
+@font-face
+  font-family 'Lato'
+  src url(../assets//fonts/Lato-Light.ttf)
+  font-weight normal
+  font-style normal
 
 #app
-  font-family "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif
+  font-family Lato
   float left
   width 100%
 
@@ -9,49 +31,90 @@ $yellow = #FFCC33
   float left
   width 100%
 
-.first-block
+.wrap
+  margin 0 auto
+  width 80%
+  max-width 1450px
+  overflow visible
+  &::after
+    content ""
+    clear: both
+    display: table
+
+.main-block
   float left
   width 100%
+  position relative
   height 800px
   width 100%
   background url('../assets/header-bg.png') center center no-repeat
   background-size cover
+  .shadow
+    position absolute
+    top 0
+    left 0
+    height 100%
+    width 100%
+    background rgba(0, 0, 0, 0.37)
 
 .navigation
-  position absolute
-  top 0
-  left 0
+  float left
   width 100%
-  height 80px
-  padding 0 10%
-  box-sizing border-box
-  background rgba(0,0,0,0.5)
+  margin-top 50px
 
 .nav-logo
   float left
   width auto
   cursor pointer
-  margin-right 240px
+  margin-right 340px
   img
     float left
-    margin 20px 0
     width auto
     height 40px
 
 .navs
   float left
   display flex
-  justify-content space-around
-  width calc(100% - 350px)
-  height 80px
+  justify-content space-between
+  width calc(100% - 450px)
+  height 40px
 
 .nav
+  position relative
   width auto
-  color #fff
-  font-size 17px
-  line-height 90px
-  font-weight bold
-  transition .2s linear
+  color $PRIM_COLOR
+  font-size 15px
+  line-height 40px
   cursor pointer
-  &:hover
-    color $yellow
+  &::after
+    content ""
+    position absolute
+    bottom 5px
+    left 0
+    height 1px
+    width 0%
+    background $PRIM_COLOR
+    transition .2s linear
+  &:hover::after
+    width 100%
+
+.main-title
+  float left
+  width 100%
+  font-size 64px
+  margin-top 180px
+  color $PRIM_COLOR
+  font-weight bold
+
+.main-text
+  float left
+  width 100%
+  margin-top 25px
+  font-size 19px
+  line-height 24px
+  color $PRIM_COLOR
+
+.main-btn
+  float left
+  width 100%
+  margin-top 70px

@@ -1,12 +1,17 @@
 <template lang="pug">
-  #main-page
-    .first-block
-      .navigation
-        .nav-logo
-          img(src="@/assets/logo-header.png")
-        .navs
-          .nav(v-for="nav in navs") {{nav.text}}
-
+#main-page
+  .main-block
+    .shadow
+      .wrap
+        .navigation
+          .nav-logo
+            img(src="@/assets/logo-head.png")
+          .navs
+            .nav(v-for="nav in navs") {{nav.text}}
+        h1.main-title AGROSTREAM
+        p.main-text Система управления </br>сельскохозяйственным производством
+        .main-btn
+          button.btn ЗАКАЗАТЬ
 
 </template>
 
@@ -23,32 +28,22 @@ export default {
         },
         {
           id: 1,
-          text: 'AGROSTREAM',
-          url: ''
-        },
-        {
-          id: 2,
           text: 'ФУНКЦИОНАЛ',
           url: ''
         },
         {
-          id: 3,
+          id: 2,
           text: 'ОТЗЫВЫ',
           url: ''
         },
         {
-          id: 4,
+          id: 3,
           text: 'МОДУЛИ',
           url: ''
         },
         {
-          id: 5,
+          id: 4,
           text: 'КОНТАКТЫ',
-          url: ''
-        },
-        {
-          id: 6,
-          text: 'О КОМПАНИИ',
           url: ''
         },
       ]
