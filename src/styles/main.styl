@@ -1,5 +1,6 @@
 $PRIM_COLOR = #fff
 $SEC_COLOR = #6FCF97
+$BACK_COLOR = #F1F1F1
 
 .btn
   display inline-block
@@ -22,6 +23,7 @@ $SEC_COLOR = #6FCF97
   margin-top 5px
   font-size 17px
   font-weight bold
+  color $SEC_COLOR
   font-family Laton
 
 .title-sec
@@ -30,7 +32,7 @@ $SEC_COLOR = #6FCF97
   margin-top 5px
   font-size 17px
   font-weight bold
-  color $SEC_COLOR
+  color #000
   font-family Laton
 
 @font-face
@@ -44,6 +46,9 @@ $SEC_COLOR = #6FCF97
   src url(../assets//fonts/Lato-Regular.ttf)
   font-weight normal
   font-style normal
+
+h1, h2, h3, h4, h5, h6
+  font-family Laton
 
 #app
   font-family Lato
@@ -69,9 +74,10 @@ $SEC_COLOR = #6FCF97
   float left
   width 100%
   position relative
-  height 800px
+  height 100vh
+  min-height 850px
   width 100%
-  background url('../assets/header-bg.png') center center no-repeat
+  background url('../assets/main-bg.jpg') center center no-repeat
   background-size cover
   .shadow
     position absolute
@@ -79,7 +85,7 @@ $SEC_COLOR = #6FCF97
     left 0
     height 100%
     width 100%
-    background rgba(0, 0, 0, 0.37)
+    background rgba(0, 0, 0, 0.35)
 
 .navigation
   float left
@@ -126,7 +132,7 @@ $SEC_COLOR = #6FCF97
   float left
   width 100%
   font-size 54px
-  margin-top 180px
+  margin-top 270px
   color $PRIM_COLOR
   font-weight bold
 
@@ -143,11 +149,12 @@ $SEC_COLOR = #6FCF97
   width 100%
   margin-top 70px
 
-.effectiveness-section
+.section
   float left
   width 100%
-  background $PRIM_COLOR
   padding 80px 0
+
+.effectiveness
   &-image
     float left
     width 50%
@@ -165,3 +172,87 @@ $SEC_COLOR = #6FCF97
       font-size 17px
       margin-bottom 20px
       text-align justify
+
+.functional
+  background $BACK_COLOR
+  &-blocks
+    float left
+    width 100%
+    margin-top 50px
+    display flex
+    justify-content space-between
+  &-block
+    float left
+    width 30%
+    max-width 300px
+    .wrap-img
+      text-align center
+      img
+        display inline-block
+        width auto
+        height 70px
+    h4
+      margin 5px 0 20px
+      font-weight bold
+      font-size 16px
+      text-align center
+    p
+      text-align justify
+      font-size 15px
+      line-height 18px
+
+.usability
+  &-texts
+    float left
+    width 60%
+    p
+      float left
+      width 100%
+      max-width 700px
+      margin-top 40px
+      font-size 15px
+      line-height 17px
+  &-img
+    float left
+    width 40%
+    text-align center
+    img
+      display inline-block
+      min-width 200px
+      width 100%
+      max-width 400px
+      height auto
+
+.review
+  background $BACK_COLOR
+  &-blocks
+    float left
+    width 100%
+    margin-top 50px
+    display flex
+    justify-content space-between
+  &-block
+    float left
+    width 30%
+    max-width 300px
+    .wrap-img
+      text-align center
+      img
+        display inline-block
+        width auto
+        height 200px
+    h4
+      margin 20px 0
+      font-weight bold
+      font-size 16px
+      text-align center
+    h5
+      margin 5px 0 20px
+      font-weight bold
+      font-size 16px
+      text-align center
+      color $SEC_COLOR
+    p
+      text-align justify
+      font-size 15px
+      line-height 18px
