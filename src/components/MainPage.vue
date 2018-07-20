@@ -5,9 +5,9 @@
       .nav-logo
         img(src="@/assets/logo-head.png")
       .navs
-        .nav(v-for="nav in navs") {{nav.text}}
+        .nav(v-for="nav in navs", @click="scrollTo(nav.url)") {{nav.text}}
 
-  .main-section
+  .main-section#first
     .shadow
       .wrap
         h1.main-title AGROSTREAM
@@ -24,7 +24,7 @@
         p Программное решение, которое сфокусировано на повышении эффективности управления процессами агропредприятия.
         p Со всей информацией одновременно могут работать несколько специалистов - вводить данные, анализировать, корректировать. Информацию можно получать как в режиме реального времени, также можно видеть отчеты о ранее выполненных работах.
         p Все данные детализированы и точны, весь учет и статистика - доступны крулосуточно. Эффективные отчеты по работе легко сформировать, распечатать на принтере или сохрнаить в памяти компьютера.
-  .section.functional
+  .section.functional#functional
     .wrap
       .title-prim ФУНКЦИОНАЛ
       .title-sec УПРАВЛЯЙ БИЗНЕСОМ ЛЕГКО
@@ -53,7 +53,7 @@
         p Эффективные отчеты по работе легко сформировать, распечатать на принтере или сохранить в памяти компьютера. Наглядное отображение нарушений, внештатных ситуаций.
       .usability-img
         img(src="@/assets/macbook.png")
-  .section.review
+  .section.review#review
     .wrap
       .title-prim ОТЗЫВЫ
       .title-sec КЛИЕНТОВ
@@ -89,7 +89,7 @@
           img(src="@/assets/logo-schneider.png")
         .partner-block
           img(src="@/assets/logo-atameken.png")
-  .section.module
+  .section.module#module
     .wrap
       .title-prim ОСНОВНЫЕ МОДУЛИ
       .title-sec ПО “AGROSTREAM”
@@ -105,7 +105,7 @@
       .module-text
         h5(v-html="moduleTitle")
         p(v-html="moduleText")
-  .section.form
+  .section.form#contact
     .wrap
       .title-prim ПРИСОЕДИНЯЙТЕСЬ! 
       .title-sec УЖЕ БОЛЕЕ 1000 ПОЛЬЗОВАТЕЛЕЙ AGROSTREAM
@@ -127,7 +127,7 @@
         .footer-nav
           img(src="@/assets/logo-head.png")
           span AGROSTREAM
-        .footer-nav(v-for="nav in navs")
+        .footer-nav(v-for="nav in navs", @click="scrollTo(nav.url)")
           p {{nav.text}}
       .footer-contacts
         .footer-contacts-left Республика Казахстан </br>г. Астана ул.Иманова 13, офис 309
@@ -135,16 +135,6 @@
 </template>
 
 <script>
-window.onscroll = () => {
-  let scrolled = window.pageYOffset || document.documentElement.scrollTop
-  let navigation = document.getElementById('js-navigation')
-  if (scrolled > 50) {
-    navigation.classList = 'navigation js-active'
-  } else {
-    navigation.classList = 'navigation'
-  }
-}
-
 export default {
   name: 'MainPage',
   data () {
@@ -153,27 +143,27 @@ export default {
         {
           id: 0,
           text: 'ГЛАВНАЯ',
-          url: ''
+          url: 'first'
         },
         {
           id: 1,
           text: 'ФУНКЦИОНАЛ',
-          url: ''
+          url: 'functional'
         },
         {
           id: 2,
           text: 'ОТЗЫВЫ',
-          url: ''
+          url: 'review'
         },
         {
           id: 3,
           text: 'МОДУЛИ',
-          url: ''
+          url: 'module'
         },
         {
           id: 4,
           text: 'КОНТАКТЫ',
-          url: ''
+          url: 'contact'
         },
       ],
       moduleTexts: {
@@ -216,11 +206,21 @@ export default {
   created() {
     this.moduleTitle = this.moduleTexts.agroplan.title
     this.moduleText = this.moduleTexts.agroplan.text
+
+    window.onscroll = () => {
+      let scrolled = window.pageYOffset || document.documentElement.scrollTop
+      let navigation = document.getElementById('js-navigation')
+      navigation.classList = scrolled > 50 ? 'navigation js-active' : 'navigation'
+    }
   },
   methods: {
     changeModuleText(obj) {
       this.moduleTitle = obj.title
       this.moduleText = obj.text
+    },
+    scrollTo(id) {
+      let elem = document.getElementById(id)
+      window.scrollTo(0, elem.offsetTop)
     }
   }
 }
