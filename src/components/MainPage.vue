@@ -1,13 +1,15 @@
 <template lang="pug">
 #main-page
+  .navigation#js-navigation
+    .wrap
+      .nav-logo
+        img(src="@/assets/logo-head.png")
+      .navs
+        .nav(v-for="nav in navs") {{nav.text}}
+
   .main-section
     .shadow
       .wrap
-        .navigation
-          .nav-logo
-            img(src="@/assets/logo-head.png")
-          .navs
-            .nav(v-for="nav in navs") {{nav.text}}
         h1.main-title AGROSTREAM
         p.main-text Система управления </br>сельскохозяйственным производством
         .main-btn
@@ -133,6 +135,16 @@
 </template>
 
 <script>
+window.onscroll = () => {
+  let scrolled = window.pageYOffset || document.documentElement.scrollTop
+  let navigation = document.getElementById('js-navigation')
+  if (scrolled > 50) {
+    navigation.classList = 'navigation js-active'
+  } else {
+    navigation.classList = 'navigation'
+  }
+}
+
 export default {
   name: 'MainPage',
   data () {

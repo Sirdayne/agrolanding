@@ -2,6 +2,11 @@ $PRIM_COLOR = #fff
 $SEC_COLOR = #6FCF97
 $BACK_COLOR = #F1F1F1
 
+#main-page
+  float left
+  width 100%
+  position relative
+
 .btn
   display inline-block
   font-family Lato
@@ -111,9 +116,19 @@ h1, h2, h3, h4, h5, h6
     background rgba(0, 0, 0, 0.35)
 
 .navigation
-  float left
+  position absolute
+  top 50px
+  left 0
   width 100%
-  margin-top 50px
+  transition .3s linear
+  box-sizing border-box
+  padding-bottom 10px
+  z-index 2
+  &.js-active
+    position fixed
+    top 0
+    padding-top 10px
+    background rgba(0, 0, 0, 0.35)
 
 .nav-logo
   float left
