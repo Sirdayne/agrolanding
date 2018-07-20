@@ -100,7 +100,9 @@
           p БАЛАНС ЗЕРНА
         .pie.pie-agromap(@click="changeModuleText(moduleTexts.agromap)")
           p AGROMAP
-      .module-text(v-html="moduleText")
+      .module-text
+        h5(v-html="moduleTitle")
+        p(v-html="moduleText")
   .section.form
     .wrap
       .title-prim ПРИСОЕДИНЯЙТЕСЬ! 
@@ -122,12 +124,12 @@
       .footer-navigation
         .footer-nav
           img(src="@/assets/logo-head.png")
-          p AGROSTREAM
+          span AGROSTREAM
         .footer-nav(v-for="nav in navs")
           p {{nav.text}}
       .footer-contacts
         .footer-contacts-left Республика Казахстан </br>г. Астана ул.Иманова 13, офис 309
-        .footer-contacts-right Телефон: 8 7172 73 11 53 </br>Email: info@agrostream.kz
+        .footer-contacts-right Телефон: 8 7172 73 11 53</br>Email: info@agrostream.kz
 </template>
 
 <script>
@@ -163,35 +165,50 @@ export default {
         },
       ],
       moduleTexts: {
-        agroplan: `Технологические карты на каждое поле и культуру
+        agroplan: {
+          title: 'AGROPLAN',
+          text: `Технологические карты на каждое поле и культуру
                   </br>План проведения СЗР и внесения удобрений
                   </br>План себестоимости работ
                   </br>План работы сельхозтехники
                   </br>Календарный график проведения агротехнологических работ
-                  </br>Сравнительный анализ плановой себестоимости продукции компаний и производственный бюджет`,
-        agrofact: `Спутниковый мониторинг техники
+                  </br>Сравнительный анализ плановой себестоимости продукции`,
+        },
+        agrofact: {
+          title: 'AGROFACT',
+          text: `Спутниковый мониторинг техники
                   </br>Контроль за выполнением технологических процессов
                   </br>Учет расхода семян, химии, контроль за нормами их внесения
                   </br>Учет выполнения работ`,
-        agromap: `Блокнот агронома
+        },
+        agromap: {
+          title: 'AGROMAP',
+          text: `Блокнот агронома
                   </br>История поля
                   </br>Химкарта
                   </br>Метеокарта
                   </br>Карта засоренности поля`,
-        bz: `Контроль учета движения зерна от поля до элеватора
+        },
+        bz: {
+          title: 'БАЛАНС ЗЕРНА',
+          text: `Контроль учета движения зерна от поля до элеватора
              </br>Контроль качества зерна
              </br>Контроль  подработки и хранения зерна
              </br>Формирование ежедневного баланса зерна`,
+        },
       },
+      moduleTitle: '',
       moduleText: ''
     }
   },
   created() {
-    this.moduleText = this.moduleTexts.agroplan
+    this.moduleTitle = this.moduleTexts.agroplan.title
+    this.moduleText = this.moduleTexts.agroplan.text
   },
   methods: {
-    changeModuleText(str) {
-      this.moduleText = str
+    changeModuleText(obj) {
+      this.moduleTitle = obj.title
+      this.moduleText = obj.text
     }
   }
 }
