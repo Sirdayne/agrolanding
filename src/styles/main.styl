@@ -16,6 +16,25 @@ $BACK_COLOR = #F1F1F1
   &:hover
     background rgba(0,0,0,0)
     color $SEC_COLOR
+  &:active
+    background $SEC_COLOR
+    opacity 0.1
+
+.input
+  display inline-block
+  font-family Lato
+  padding 0 20px
+  height 40px
+  min-width 300px
+  font-size 16px
+  color #323232
+  border 1px solid #F4F4F4
+  box-sizing border-box
+  background #F4F4F4
+  box-shadow 2px 2px rgba(0, 0, 0, 0.25)
+  cursor pointer
+  outline none
+  transition .2s linear
 
 .title-prim
   float left
@@ -256,3 +275,107 @@ h1, h2, h3, h4, h5, h6
       text-align justify
       font-size 15px
       line-height 18px
+
+.partner
+  &-blocks
+    float left
+    width 100%
+    margin-top 50px
+    display flex
+    justify-content space-between
+  &-block
+    img
+      width 200px
+      height auto
+
+$PIE_MARGIN_H = 50px
+$PIE_MARGIN_W = 30px
+
+.module
+  background $BACK_COLOR
+  &-graph
+    float left
+    width 420px
+    margin-top 100px
+
+  .pie
+    float left
+    width 200px
+    height 200px
+    margin 5px
+    position relative
+    cursor pointer
+    transition .2s linear
+    &:hover
+      box-shadow 0px 0px 5px 5px $SEC_COLOR
+      opacity 0.8
+    &:active
+      opacity 0.3
+    p
+      position absolute
+      font-weight bold
+      color #fff
+      font-size 17px
+      transition .2s linear
+    &-agroplan
+      border-radius 100% 0 0 0
+      background #2a69a8
+      p
+
+        bottom $PIE_MARGIN_H
+        right $PIE_MARGIN_W
+    &-agrofact
+      border-radius 0 100% 0 0
+      background #2aa8a0
+      p
+        bottom $PIE_MARGIN_H
+        left $PIE_MARGIN_W
+    &-bz
+      border-radius 0 0 0 100%
+      background #2aa865
+      p
+        top $PIE_MARGIN_H
+        right $PIE_MARGIN_W
+    &-agromap
+      border-radius 0 0 100% 0
+      background #3ba82a
+      p
+        top $PIE_MARGIN_H
+        left $PIE_MARGIN_W
+
+  &-text
+    float left
+    width calc(100% - 570px)
+    margin 180px 0 0 150px
+    line-height 40px
+    font-size 16px
+
+.form
+  &-block
+    float left
+    width 100%
+    margin-top 70px
+  &-inputs
+    float left
+    width 450px
+    text-align center
+    input
+      width 100%
+    .row
+      float left
+      width 100%
+      margin-top 20px
+      &-btn
+        float left
+        width 100%
+        margin-top 40px
+        text-align center
+
+  &-text
+    float left
+    width calc(100% - 750px)
+    margin-left 300px
+    font-size 16px
+    line-height 20px
+    color #000
+    font-weight bold

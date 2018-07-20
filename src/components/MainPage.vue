@@ -74,6 +74,48 @@
           h4 Айдарбек Ходжаназаров
           h5 ТОО «Иволга-Холдинг»
           p “Мы только начинаем сотрудничество, но уже специалисты AgroStream зарекомендовали себя как надежные партнеры”
+  .section.partner
+    .wrap
+      .title-prim НАШИ
+      .title-sec ПАРТНЕРЫ
+      .partner-blocks
+        .partner-block
+          img(src="@/assets/logo-terra.png")
+        .partner-block
+          img(src="@/assets/logo-silos.png")
+        .partner-block
+          img(src="@/assets/logo-schneider.png")
+        .partner-block
+          img(src="@/assets/logo-atameken.png")
+  .section.module
+    .wrap
+      .title-prim ОСНОВНЫЕ МОДУЛИ
+      .title-sec ПО “AGROSTREAM”
+      .module-graph
+        .pie.pie-agroplan(@click="changeModuleText(moduleTexts.agroplan)")
+          p AGROPLAN
+        .pie.pie-agrofact(@click="changeModuleText(moduleTexts.agrofact)")
+          p AGROFACT
+        .pie.pie-bz(@click="changeModuleText(moduleTexts.bz)")
+          p БАЛАНС ЗЕРНА
+        .pie.pie-agromap(@click="changeModuleText(moduleTexts.agromap)")
+          p AGROMAP
+      .module-text(v-html="moduleText")
+  .section.form
+    .wrap
+      .title-prim ПРИСОЕДИНЯЙТЕСЬ! 
+      .title-sec УЖЕ БОЛЕЕ 1000 ПОЛЬЗОВАТЕЛЕЙ AGROSTREAM
+      .form-block
+        .form-inputs
+          .row
+            input.input(placeholder='ВАШЕ ИМЯ')
+          .row
+            input.input(placeholder='ВАШ E-MAIL')
+          .row
+            input.input(placeholder='ТЕЛЕФОН')
+          .row-btn
+            button.btn ЗАКАЗАТЬ
+        .form-text Бонус : 60 дней без абонентской платы при заказе </br>полного комплекта оборудования TerrraPoint </br></br>Ваши данные не передаются третим лицам
 
 </template>
 
@@ -108,7 +150,27 @@ export default {
           text: 'КОНТАКТЫ',
           url: ''
         },
-      ]
+      ],
+      moduleTexts: {
+        agroplan: `Технологические карты на каждое поле и культуру
+                  </br>План проведения СЗР и внесения удобрений
+                  </br>План себестоимости работ
+                  </br>План работы сельхозтехники
+                  </br>Календарный график проведения агротехнологических работ
+                  </br>Сравнительный анализ плановой себестоимости продукции компаний покомпонентно  и производственный бюджет`,
+        agrofact: `AGROFACT`,
+        agromap: `AGROMAP`,
+        bz: `BZ`,
+      },
+      moduleText: ''
+    }
+  },
+  created() {
+    this.moduleText = this.moduleTexts.agroplan
+  },
+  methods: {
+    changeModuleText(str) {
+      this.moduleText = str
     }
   }
 }
