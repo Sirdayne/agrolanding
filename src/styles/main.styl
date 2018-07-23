@@ -2,6 +2,12 @@ $PRIM_COLOR = #fff
 $SEC_COLOR = #6FCF97
 $BACK_COLOR = #F1F1F1
 
+$PIE_MARGIN_H = 50px
+$PIE_MARGIN_W = 30px
+
+$PIE_MARGIN_H_MOBILE = 15px
+$PIE_MARGIN_W_MOBILE = 10px
+
 #main-page
   float left
   width 100%
@@ -91,7 +97,6 @@ h1, h2, h3, h4, h5, h6
   margin 0 auto
   width 80%
   max-width 1450px
-  min-width 1000px
   overflow visible
   &::after
     content ""
@@ -307,9 +312,6 @@ h1, h2, h3, h4, h5, h6
       width 200px
       height auto
 
-$PIE_MARGIN_H = 50px
-$PIE_MARGIN_W = 30px
-
 .module
   background $BACK_COLOR
   &-graph
@@ -461,3 +463,159 @@ $PIE_MARGIN_W = 30px
       float right
       width auto
       text-align right
+
+@media only screen and (max-width : 1600px)
+  .effectiveness-text
+    margin-top 80px
+
+@media only screen and (max-width : 1300px)
+  .wrap
+    width calc(100% - 80px)
+  .effectiveness-image img
+    width 80%
+  .module-text
+    width calc(100% - 540px)
+    margin 160px 0 0 120px
+
+@media only screen and (max-width : 1000px)
+  .section
+    padding 50px 0
+  .wrap
+    width calc(100% - 40px)
+
+  .nav-logo
+    margin-right 40px
+  .navs
+    width calc(100% - 81px)
+  .nav
+    font-size 13px
+
+  .main-section
+    min-height 400px
+    text-align center
+  .main-title
+    font-size 34px
+    margin-top 220px
+  .main-text
+    font-size 16px
+  .main-btn
+    margin-top 30px
+
+  .effectiveness-text
+    width 100%
+    margin-top 20px
+  .effectiveness-image
+    margin-top 30px
+    width 100%
+    text-align center
+    img
+      max-width 400px
+
+  .functional-blocks
+    display block
+  .functional-block
+    margin 15px 0
+    width 100%
+    max-width none
+
+  .usability-texts
+    width 100%
+  .usability-img
+    margin-top 50px
+    width 100%
+    text-align center
+
+  .review-blocks
+    display block
+  .review-block
+    margin 20px 0
+    width 100%
+    max-width none
+
+  .partner-blocks
+    display block
+  .partner-block
+    float left
+    margin 30px 0
+    width 50%
+    text-align center
+
+  .module-graph
+    float none
+    margin 0 auto
+  .module-text
+    text-align center
+    width 100%
+    margin 30px 0 0
+
+  .form-text
+    width calc(100% - 500px)
+    margin-left 50px
+
+@media only screen and (max-width : 850px)
+  .form-block
+    margin-top 20px
+  .form-inputs
+    width 100%
+  .form-text
+    float left
+    width 100%
+    text-align center
+    margin 30px 0 0
+
+  .footer
+    .footer-navigation
+      display block
+      .footer-nav
+        width 100%
+        text-align center
+        p, img, span
+          display inline-block
+          float none
+        span
+          margin-right 55px
+    .footer-contacts
+      margin-top 15px
+    .footer-contacts-left, .footer-contacts-right
+      width 100%
+      text-align center
+
+@media only screen and (max-width : 600px)
+  .partner-block
+    width 100%
+    margin 20px 0
+  #partner-block-atameken
+    margin 0
+
+@media only screen and (max-width : 500px)
+  .module
+    &-graph
+      width 320px
+    .pie
+      width 150px
+      height 150px
+      margin 5px
+      p
+        font-size 14px
+      &-agroplan
+        p
+          bottom $PIE_MARGIN_H_MOBILE
+          right $PIE_MARGIN_W_MOBILE
+      &-agrofact
+        p
+          bottom $PIE_MARGIN_H_MOBILE
+          left $PIE_MARGIN_W_MOBILE
+      &-bz
+        p
+          top $PIE_MARGIN_H_MOBILE
+          right $PIE_MARGIN_W_MOBILE
+      &-agromap
+        p
+          top $PIE_MARGIN_H_MOBILE
+          left $PIE_MARGIN_W_MOBILE
+
+    .module-text
+      h5
+        margin-bottom 15px
+      p
+        line-height 22px

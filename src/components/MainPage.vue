@@ -87,7 +87,7 @@
           img(src="@/assets/logo-silos.png")
         .partner-block
           img(src="@/assets/logo-schneider.png")
-        .partner-block
+        .partner-block#partner-block-atameken
           img(src="@/assets/logo-atameken.png")
   .section.module#module
     .wrap
@@ -127,8 +127,8 @@
         .footer-nav
           img(src="@/assets/logo-head.png")
           span AGROSTREAM
-        .footer-nav(v-for="nav in navs", @click="scrollTo(nav.url)")
-          p {{nav.text}}
+        .footer-nav(v-for="nav in navs")
+          p(@click="scrollTo(nav.url)") {{nav.text}}
       .footer-contacts
         .footer-contacts-left Республика Казахстан </br>г. Астана ул.Иманова 13, офис 309
         .footer-contacts-right Телефон: 8 7172 73 11 53</br>Email: info@agrostream.kz
