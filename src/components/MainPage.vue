@@ -4,16 +4,16 @@
     .modal-back(@click="closeModal()")
     .modal
       .title-prim ПРИСОЕДИНЯЙТЕСЬ!
-      .title-sec  УЖЕ БОЛЕЕ 1000 ПОЛЬЗОВАТЕЛЕЙ AGROSTREAM
+      .title-sec УЖЕ БОЛЕЕ 1000 ПОЛЬЗОВАТЕЛЕЙ AGROSTREAM
       .form-inputs(style="margin-top: 20px;")
         .row
-          input.input(placeholder='ВАШЕ ИМЯ')
+          input.input(placeholder='ВАШЕ ИМЯ', v-model="form.name")
         .row
-          input.input(placeholder='ВАШ E-MAIL')
+          input.input(placeholder='ВАШ E-MAIL', v-model="form.email")
         .row
-          input.input(placeholder='ТЕЛЕФОН')
+          input.input(placeholder='ТЕЛЕФОН', v-model="form.phone")
         .row-btn
-          button.btn ОТПРАВИТЬ
+          button.btn(@click="postData()") ОТПРАВИТЬ
 
   .navigation#js-navigation
     .wrap
@@ -132,13 +132,13 @@
       .form-block
         .form-inputs
           .row
-            input.input(placeholder='ВАШЕ ИМЯ')
+            input.input(placeholder='ВАШЕ ИМЯ', v-model="form.name")
           .row
-            input.input(placeholder='ВАШ E-MAIL')
+            input.input(placeholder='ВАШ E-MAIL', v-model="form.email")
           .row
-            input.input(placeholder='ТЕЛЕФОН')
+            input.input(placeholder='ТЕЛЕФОН', v-model="form.phone")
           .row-btn
-            button.btn ОТПРАВИТЬ
+            button.btn(@click="postData()") ОТПРАВИТЬ
         .form-text Бонус : 60 дней без абонентской платы при заказе </br>полного комплекта оборудования TerrraPoint </br></br>Ваши данные не передаются третим лицам
 
   .section.footer
@@ -155,6 +155,9 @@
 </template>
 
 <script>
+import http from '@/services/httpQuery'
+import { Message } from 'element-ui'
+
 export default {
   name: 'MainPage',
   data () {
@@ -223,6 +226,11 @@ export default {
       moduleText: '',
       modalShow: false,
       burgerActive: false,
+      form: {
+        name: '',
+        email: '',
+        phone: ''
+      }
     }
   },
   created() {
@@ -252,6 +260,26 @@ export default {
     },
     toggleBurger() {
       this.burgerActive = !this.burgerActive
+    },
+    postData() {
+      this.prepareData()
+    },
+    prepareData() {
+      let body = ''
+      if (this.form.name.length > 0 && this.form.email.length > 0 && this.form.phone.length > 0) {
+        body=`Имя=${this.form.name}&Почта=${this.form.email}&Телефон=${this.form.phone}`
+        http.postMail('mail.php', body).then(() => {
+          this.form.name = ''
+          this.form.email = ''
+          this.form.phone = ''
+        })
+      } else {
+        Message({
+          message: 'Заполните данные',
+          duration: 2000,
+          showClose: true,
+        });
+      }
     }
   }
 }

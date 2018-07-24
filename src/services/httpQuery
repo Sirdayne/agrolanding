@@ -1,0 +1,58 @@
+import axios from 'axios';
+import { Message } from 'element-ui';
+
+const BASE_URL = `http://trainbrain.pro/apiagrolanding/`
+
+let apiMail = axios.create({
+  baseURL: BASE_URL,
+  timeout: 180000,
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded',
+  }
+})
+
+let api = axios.create({
+  baseURL: BASE_URL + 'api/',
+  timeout: 180000,
+  responseType: 'json',
+  headers: {
+    'Content-Type': 'application/json',
+  }
+})
+
+export default {
+  get(path) {
+    return api.get(path)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        this.showError()
+      });
+  },
+  postMail(path, data) {
+    return apiMail.post(path, data)
+      .then((response) => {
+        this.showSuccess()
+      })
+      .catch((error) => {
+        this.showError()
+      });
+  },
+  showError() {
+    Message({
+      message: 'Ошибка',
+      type: "error",
+      duration: 5000,
+      showClose: true,
+    });
+  },
+  showSuccess() {
+    Message({
+      message: 'Успешно отправлено!',
+      type: "success",
+      duration: 5000,
+      showClose: true,
+    });
+  }
+}
