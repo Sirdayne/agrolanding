@@ -112,15 +112,16 @@
     .wrap
       .title-prim ОСНОВНЫЕ МОДУЛИ
       .title-sec ПО “AGROSTREAM”
-      .module-graph
-        .pie.pie-agroplan(@click="changeModuleText(moduleTexts.agroplan)")
-          p AGROPLAN
-        .pie.pie-agrofact(@click="changeModuleText(moduleTexts.agrofact)")
-          p AGROFACT
-        .pie.pie-bz(@click="changeModuleText(moduleTexts.bz)")
-          p БАЛАНС ЗЕРНА
-        .pie.pie-agromap(@click="changeModuleText(moduleTexts.agromap)")
-          p AGROMAP
+      .module-graph-container
+        .module-graph
+          .pie.pie-agroplan(@click="changeModuleText(moduleTexts.agroplan)")
+            p AGROPLAN
+          .pie.pie-agrofact(@click="changeModuleText(moduleTexts.agrofact)")
+            p AGROFACT
+          .pie.pie-bz(@click="changeModuleText(moduleTexts.bz)")
+            p БАЛАНС ЗЕРНА
+          .pie.pie-agromap(@click="changeModuleText(moduleTexts.agromap)")
+            p AGROMAP
       .module-text
         h5(v-html="moduleTitle")
         p(v-html="moduleText")

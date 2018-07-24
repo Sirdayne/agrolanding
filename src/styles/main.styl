@@ -375,6 +375,9 @@ h1, h2, h3, h4, h5, h6
 
 .module
   background $BACK_COLOR
+  &-graph-container
+    float left
+    width auto
   &-graph
     float left
     width 420px
@@ -604,9 +607,11 @@ h1, h2, h3, h4, h5, h6
     width 50%
     text-align center
 
+  .module-graph-container
+    width 100%
   .module-graph
     float none
-    margin 0 auto
+    margin 30px auto 0
   .module-text
     text-align center
     width 100%
@@ -621,6 +626,7 @@ h1, h2, h3, h4, h5, h6
     margin-top 20px
   .form-inputs
     width 100%
+    max-width none
   .form-text
     float left
     width 100%
@@ -648,7 +654,7 @@ h1, h2, h3, h4, h5, h6
   .nav-burger
     display block
   .nav-logo
-    width calc(100% - 80px)
+    width calc(100% - 75px)
     margin 0
     text-align center
   .navs
@@ -665,7 +671,6 @@ h1, h2, h3, h4, h5, h6
   .nav
     text-align center
     width 100%
-    padding-right 10px
     box-sizing border-box
     &:hover::after
       width 0%
@@ -677,6 +682,7 @@ h1, h2, h3, h4, h5, h6
   #partner-block-atameken
     margin 0
   .modal
+    margin 60px auto 0
     max-width none
 
 @media only screen and (max-width : 500px)
