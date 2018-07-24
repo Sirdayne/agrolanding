@@ -1,10 +1,29 @@
 <template lang="pug">
 #main-page
+  .wrap-modal(v-if="modalShow")
+    .modal-back(@click="closeModal()")
+    .modal
+      .title-prim ПРИСОЕДИНЯЙТЕСЬ!
+      .title-sec  УЖЕ БОЛЕЕ 1000 ПОЛЬЗОВАТЕЛЕЙ AGROSTREAM
+      .form-inputs(style="margin-top: 20px;")
+        .row
+          input.input(placeholder='ВАШЕ ИМЯ')
+        .row
+          input.input(placeholder='ВАШ E-MAIL')
+        .row
+          input.input(placeholder='ТЕЛЕФОН')
+        .row-btn
+          button.btn ОТПРАВИТЬ
+
   .navigation#js-navigation
     .wrap
+      .nav-burger(@click="toggleBurger()", :class="{'vue-active': burgerActive}")
+        .nav-line.nav-line-1
+        .nav-line.nav-line-2
+        .nav-line.nav-line-3
       .nav-logo
         img(src="@/assets/logo-head.png")
-      .navs
+      .navs(:class="{'vue-active': burgerActive}")
         .nav(v-for="nav in navs", @click="scrollTo(nav.url)") {{nav.text}}
 
   .main-section#first
@@ -13,7 +32,7 @@
         h1.main-title AGROSTREAM
         p.main-text Система управления </br>сельскохозяйственным производством
         .main-btn
-          button.btn ЗАКАЗАТЬ
+          button.btn(@click="openModal") ЗАКАЗАТЬ
   .section.effectiveness
     .wrap
       .title-prim ПОВЫШЕНИЕ ЭФФЕКТИВНОСТИ
@@ -118,7 +137,7 @@
           .row
             input.input(placeholder='ТЕЛЕФОН')
           .row-btn
-            button.btn ЗАКАЗАТЬ
+            button.btn ОТПРАВИТЬ
         .form-text Бонус : 60 дней без абонентской платы при заказе </br>полного комплекта оборудования TerrraPoint </br></br>Ваши данные не передаются третим лицам
 
   .section.footer
@@ -200,7 +219,9 @@ export default {
         },
       },
       moduleTitle: '',
-      moduleText: ''
+      moduleText: '',
+      modalShow: false,
+      burgerActive: false,
     }
   },
   created() {
@@ -221,6 +242,15 @@ export default {
     scrollTo(id) {
       let elem = document.getElementById(id)
       window.scrollTo(0, elem.offsetTop)
+    },
+    openModal() {
+      this.modalShow = true
+    },
+    closeModal() {
+      this.modalShow = false
+    },
+    toggleBurger() {
+      this.burgerActive = !this.burgerActive
     }
   }
 }

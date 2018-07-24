@@ -36,7 +36,6 @@ $PIE_MARGIN_W_MOBILE = 10px
   font-family Lato
   padding 0 20px
   height 40px
-  min-width 300px
   font-size 16px
   color #323232
   border 1px solid #F4F4F4
@@ -50,6 +49,35 @@ $PIE_MARGIN_W_MOBILE = 10px
     background #fcfcfc
     color #000
     border 1px solid #fcfcfc
+
+.wrap-modal
+  position fixed
+  height 100%
+  width 100%
+  z-index 3
+.modal
+  position relative
+  margin 150px auto 0
+  max-width 500px
+  width 100%
+  background #fff
+  box-sizing border-box
+  padding 30px
+  overflow visible
+  z-index 5
+  &::after
+    content ""
+    clear: both
+    display: table
+.modal-back
+  position absolute
+  top 0
+  left 0
+  height 100%
+  width 100%
+  background rgba(0,0,0,0.44)
+  cursor pointer
+  z-index 4
 
 .title-prim
   float left
@@ -133,15 +161,48 @@ h1, h2, h3, h4, h5, h6
     position fixed
     top 0
     padding-top 10px
-    background rgba(0, 0, 0, 0.35)
+    background rgba(0, 0, 0, 0.55)
+
+.nav-burger
+  float left
+  display none
+  height 40px
+  width 35px
+  cursor pointer
+  position relative
+
+.nav-line
+  position absolute
+  left 0
+  width 100%
+  height 2px
+  background #fff
+  transition .3s linear
+  &-1
+    top 10px
+  &-2
+    top 22px
+  &-3
+    top 33px
+
+.nav-burger.vue-active
+  .nav-line
+    &-1
+      top 22px
+      transform rotate(45deg)
+    &-2
+      left 50px
+      opacity 0
+    &-3
+      top 22px
+      transform rotate(-45deg)
 
 .nav-logo
   float left
   width auto
-  cursor pointer
   margin-right 340px
   img
-    float left
+    display inline-block
     width auto
     height 40px
 
@@ -388,7 +449,8 @@ h1, h2, h3, h4, h5, h6
     margin-top 70px
   &-inputs
     float left
-    width 450px
+    max-width 450px
+    width 100%
     text-align center
     input
       width 100%
@@ -491,7 +553,9 @@ h1, h2, h3, h4, h5, h6
     font-size 13px
 
   .main-section
-    min-height 400px
+    min-height 600px
+    height 100vh
+    max-height 700px
     text-align center
   .main-title
     font-size 34px
@@ -580,23 +644,51 @@ h1, h2, h3, h4, h5, h6
       width 100%
       text-align center
 
+@media only screen and (max-width : 800px)
+  .nav-burger
+    display block
+  .nav-logo
+    width calc(100% - 80px)
+    margin 0
+    text-align center
+  .navs
+    display none
+    position absolute
+    top 62px
+    left 0
+    width 100%
+    background rgba(0, 0, 0, 0.55)
+    height auto
+    z-index 6
+    &.vue-active
+      display block
+  .nav
+    text-align center
+    width 100%
+    padding-right 10px
+    box-sizing border-box
+    &:hover::after
+      width 0%
+
 @media only screen and (max-width : 600px)
   .partner-block
     width 100%
     margin 20px 0
   #partner-block-atameken
     margin 0
+  .modal
+    max-width none
 
 @media only screen and (max-width : 500px)
   .module
     &-graph
-      width 320px
+      width 280px
     .pie
-      width 150px
-      height 150px
+      width 130px
+      height 130px
       margin 5px
       p
-        font-size 14px
+        font-size 13px
       &-agroplan
         p
           bottom $PIE_MARGIN_H_MOBILE
