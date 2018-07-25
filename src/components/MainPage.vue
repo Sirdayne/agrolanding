@@ -262,9 +262,6 @@ export default {
       this.burgerActive = !this.burgerActive
     },
     postData() {
-      this.prepareData()
-    },
-    prepareData() {
       let body = ''
       if (this.form.name.length > 0 && this.form.email.length > 0 && this.form.phone.length > 0) {
         body=`Имя=${this.form.name}&Почта=${this.form.email}&Телефон=${this.form.phone}`
