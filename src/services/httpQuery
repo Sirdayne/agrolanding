@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Message } from 'element-ui';
 
-const BASE_URL = `http://trainbrain.pro/apiagrolanding/`
+const BASE_URL = `http://agrostream.net/api/`
 
 let apiMail = axios.create({
   baseURL: BASE_URL,
