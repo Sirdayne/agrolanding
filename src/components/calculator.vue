@@ -447,10 +447,10 @@ export default {
 
       this.countCheckboxes()
 
-      const constMultiService = 600000
+      this.multiService = 600000
 
       if (this.checkCounter > 2) {
-        this.multiService = constMultiService * this.checkCounter / 2
+        this.multiService = this.multiService * this.checkCounter / 2
       }
 
       //Капитальные расходы
@@ -463,16 +463,16 @@ export default {
       this.totalCost = this.capitalCost + this.constantCost
 
       //Животноводство
-      this.incomeAnimal = this.valHeads * this.valAverageNadoi * this.valAverageRealization * this.valPercentNadoi
+      this.incomeAnimal = this.valHeads * this.valAverageNadoi * this.valAverageRealization * this.valPercentNadoi/100
 
       //Растениеводство
-      this.incomePlant = this.valAverageYield * this.valPercentYield * this.valSowingArea / 10 * this.valRealizationTonne + (this.valAverageYield + this.valAverageYield * this.valPercentYield * this.valSowingArea / 10) * this.valAverageRefaction * this.valPercentRefaction * this.valRealizationTonne + this.valAverageTMC * this.valPercentTMC * this.valSowingArea
+      this.incomePlant = this.valAverageYield * this.valPercentYield/100 * this.valSowingArea / 10 * this.valRealizationTonne + (this.valAverageYield + this.valAverageYield * this.valPercentYield/100 * this.valSowingArea / 10) * this.valAverageRefaction/100 * this.valPercentRefaction/100 * this.valRealizationTonne + this.valAverageTMC * this.valPercentTMC/100 * this.valSowingArea
 
       //Человеческий фактор
-      this.incomeHuman = this.valVacanciesMonth * 12 * this.valVacancies + this.valAverageTMC * this.valPercentNotEffectiveTMC * this.valSowingArea
+      this.incomeHuman = this.valVacanciesMonth * 12 * this.valVacancies + this.valAverageTMC * this.valPercentNotEffectiveTMC/100 * this.valSowingArea
 
       //Кражи
-      this.incomeThief = this.valThiefSeason * 35 * this.valRealizationTonne + this.valAverageTMC * this.valPercentTMCSeason * this.valSowingArea
+      this.incomeThief = this.valThiefSeason * 35 * this.valRealizationTonne + this.valAverageTMC * this.valPercentTMCSeason/100 * this.valSowingArea
 
       //Итого доходов на новые технологии за сезон
       this.incomeTotal = this.incomeAnimal + this.incomeHuman + this.incomePlant + this.incomeThief
@@ -490,8 +490,6 @@ export default {
       if (this.boolVideo)
         this.checkCounter++
       if (this.boolControl)
-        this.checkCounter++
-      if (this.boolKart)
         this.checkCounter++
       if (this.boolNDVI)
         this.checkCounter++
