@@ -13,6 +13,12 @@ $PIE_MARGIN_W_MOBILE = 10px
   width 100%
   position relative
 
+.btn-container
+  float left
+  width 100%
+  margin-top 30px
+  text-align center
+
 .btn
   display inline-block
   font-family Lato
@@ -475,6 +481,50 @@ h1, h2, h3, h4, h5, h6
     line-height 20px
     color #000
     font-weight bold
+
+$CALC_HEIGHT = 30px
+
+.calculator
+  .table
+    float left
+    width 100%
+    margin-top 30px
+    border-top 1px solid $SEC_COLOR
+    box-sizing border-box
+  .row
+    float left
+    width 100%
+    border 1px solid #dedede
+    box-sizing border-box
+    padding 8px 13px
+    .left
+      float left
+      p
+        float left
+        line-height $CALC_HEIGHT
+    .right
+      float right
+      .input
+        float left
+        margin 0 10px
+        height $CALC_HEIGHT
+      p
+        float left
+        line-height $CALC_HEIGHT
+        min-width 60px
+      input[type="checkbox"]
+        float left
+        margin 10px 20px 0 10px
+      .unit
+        float left
+        width 150px
+        line-height $CALC_HEIGHT
+      .overall
+        float left
+        width 150px
+        height $CALC_HEIGHT
+        line-height $CALC_HEIGHT
+        border-bottom: 1px solid #323232
 
 .footer
   color #fff

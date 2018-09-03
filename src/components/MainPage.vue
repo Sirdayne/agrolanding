@@ -139,8 +139,8 @@
             input.input(placeholder='ТЕЛЕФОН', v-model="form.phone")
           .row-btn
             button.btn(@click="postData()") ОТПРАВИТЬ
-        .form-text Бонус : 60 дней без абонентской платы при заказе </br>полного комплекта оборудования TerrraPoint </br></br>Ваши данные не передаются третим лицам
-
+        .form-text Бонус : 60 дней без абонентской платы при заказе </br>полного комплекта оборудования TerraPoint </br></br>Ваши данные не передаются третим лицам
+  calculator
   .section.footer
     .wrap
       .footer-navigation
@@ -157,9 +157,13 @@
 <script>
 import http from '@/services/httpQuery'
 import { Message } from 'element-ui'
+import calculator from '@/components/calculator'
 
 export default {
   name: 'MainPage',
+  components: {
+    calculator
+  },
   data () {
     return {
       navs: [
