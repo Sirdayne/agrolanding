@@ -265,45 +265,46 @@
     .btn-container
       button.btn(@click="calculate()") РАССЧИТАТЬ
 
-    .title-prim(style="margin-top: 30px") Итого расходов на новые технологии: {{totalCost}}
+    .title-prim(style="margin-top: 30px") Итого расходов на новые технологии:
+      .title-prim-right {{this.setFixed(totalCost)}} тг
     .table
       .row
         .left
           p Капитальные расходы
         .right
-          p {{capitalCost}}
+          p {{this.setFixed(capitalCost)}} тг
       .row
         .left
           p Накладные расходы
         .right
-          p {{constantCost}}
+          p {{this.setFixed(constantCost)}} тг
 
-    .title-prim(style="margin-top: 30px") Итого доходов на новые технологии за сезон: {{incomeTotal}}
+    .title-prim(style="margin-top: 30px") Итого доходов на новые технологии за сезон:
+      .title-prim-right {{this.setFixed(incomeTotal)}} тг
     .table
       .row
         .left
           p Животноводство
         .right
-          p {{incomeAnimal}}
+          p {{this.setFixed(incomeAnimal)}} тг
       .row
         .left
           p Растениеводство
         .right
-          p {{incomePlant}}
+          p {{this.setFixed(incomePlant)}} тг
       .row
         .left
           p Человеческий фактор
         .right
-          p {{incomeHuman}}
+          p {{this.setFixed(incomeHuman)}} тг
       .row
         .left
           p Кражи
         .right
-          p {{incomeThief}}
+          p {{this.setFixed(incomeThief)}} тг
 
-    .title-prim(style="margin-top: 30px") Окупаемость (количество сезонов): {{recoupment}}
-
-
+    .title-prim(style="margin-top: 30px") Окупаемость (количество сезонов):
+      .title-prim-right {{recoupment.toFixed(2)}}
 </template>
 
 <script>
@@ -468,6 +469,7 @@ export default {
       //Растениеводство
       this.incomePlant = this.valAverageYield * this.valPercentYield/100 * this.valSowingArea / 10 * this.valRealizationTonne + (this.valAverageYield + this.valAverageYield * this.valPercentYield/100 * this.valSowingArea / 10) * this.valAverageRefaction/100 * this.valPercentRefaction/100 * this.valRealizationTonne + this.valAverageTMC * this.valPercentTMC/100 * this.valSowingArea
 
+
       //Человеческий фактор
       this.incomeHuman = this.valVacanciesMonth * 12 * this.valVacancies + this.valAverageTMC * this.valPercentNotEffectiveTMC/100 * this.valSowingArea
 
@@ -509,6 +511,9 @@ export default {
         this.checkCounter++
       if (this.boolProg)
         this.checkCounter++
+    },
+    setFixed(num) {
+      return num.toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, '$1,')
     },
     postData() {
       let body = ''
