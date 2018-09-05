@@ -1,10 +1,21 @@
 <template lang="pug">
-.section.calculator
-  .wrap
-    .title-prim КАЛЬКУЛЯТОР
-    .title-sec(style="margin-bottom: 30px") СТАНОВИТЕСЬ НАШИМИ КЛИЕНТАМИ И ПАРТНЕРАМИ
-    p Экономический эффект от внедрения средств автоматизации может быть лишь косвенным, так как внедренные средства автоматизации не являются прямым источником дохода, а являются либо вспомогательным средством организации получения прибыли, либо помогают минимизировать затраты. Оценить экономический эффект внедрения технологий TerraPoint поможет наш онлайн калькулятор окупаемости технологий. Калькулятор позволяет высчитать среднюю стоимость внедрения новых технологий для Вашего предприятий, рассчитать положительный эффект благодаря сокращению издержек, контролю технологий, исключению краж и минимизации влияния человеческого фактора. Средний срок окупаемости полного комплекса технологий автоматизации TerraPoint составляет всего 1 сезон!
-    p Эффективность — прежде всего!
+.section
+  .form#contact
+    .wrap
+      .title-prim ПРИСОЕДИНЯЙТЕСЬ! 
+      .title-sec УЖЕ БОЛЕЕ 1000 ПОЛЬЗОВАТЕЛЕЙ AGROSTREAM
+      p(style="margin-top: 50px") Экономический эффект от внедрения средств автоматизации может быть лишь косвенным, так как внедренные средства автоматизации не являются прямым источником дохода, а являются либо вспомогательным средством организации получения прибыли, либо помогают минимизировать затраты. Оценить экономический эффект внедрения технологий TerraPoint поможет наш онлайн калькулятор окупаемости технологий. Калькулятор позволяет высчитать среднюю стоимость внедрения новых технологий для Вашего предприятий, рассчитать положительный эффект благодаря сокращению издержек, контролю технологий, исключению краж и минимизации влияния человеческого фактора. Средний срок окупаемости полного комплекса технологий автоматизации TerraPoint составляет всего 1 сезон!
+      p Эффективность — прежде всего!
+      .form-block
+        .form-inputs
+          .row
+            input.input(placeholder='ВАШЕ ИМЯ', v-model="form.name", @change="openSpoilers()")
+          .row
+            input.input(placeholder='ВАШ E-MAIL', v-model="form.email", @change="openSpoilers()")
+          .row
+            input.input(placeholder='ТЕЛЕФОН', v-model="form.phone", @change="openSpoilers()")
+        .form-text Бонус : 60 дней без абонентской платы при заказе </br>полного комплекта оборудования TerraPoint </br></br>Ваши данные не передаются третим лицам
+  .wrap.calculator
 
     .title-prim(style="margin-top: 30px") Ответьте пожалуйста на следующие вопросы:
     .table
@@ -12,65 +23,65 @@
         .left
           p Какова у вас посевная площадь?
         .right
-          input.input(v-model="valSowingArea")
+          input.input(v-model="valSowingArea", @change="openSpoilers()")
           p га
       .row
         .left
           p Какова у вас средняя реализация 1 тонны товарного зерна?
         .right
-          input.input(v-model="valRealizationTonne")
+          input.input(v-model="valRealizationTonne", @change="openSpoilers()")
           p тг
       .row
         .left
           p Количество голов?
         .right
-          input.input(v-model="valHeads")
+          input.input(v-model="valHeads", @change="openSpoilers()")
           p шт
       .row
         .left
           p Количество техники, которые необходимо контролировать?
         .right
-          input.input(v-model="valVehicles")
+          input.input(v-model="valVehicles", @change="openSpoilers()")
           p шт
       .row
         .left
           p Количество электронных весов
         .right
-          input.input(v-model="valElectronic")
+          input.input(v-model="valElectronic", @change="openSpoilers()")
           p шт
       .row
         .left
           p Объем хранения зерна на элеваторе
         .right
-          input.input(v-model="valVolumeElevator")
+          input.input(v-model="valVolumeElevator", @change="openSpoilers()")
           p т
       .row
         .left
           p Какова средняя урожайность?
         .right
-          input.input(v-model="valAverageYield")
+          input.input(v-model="valAverageYield", @change="openSpoilers()")
           p ц/га
       .row
         .left
           p Какова средняя рефакция?
         .right
-          input.input(v-model="valAverageRefaction")
+          input.input(v-model="valAverageRefaction", @change="openSpoilers()")
           p %
       .row
         .left
           p Каков средний надой/привес 1 головы в год?
         .right
-          input.input(v-model="valAverageNadoi")
+          input.input(v-model="valAverageNadoi", @change="openSpoilers()")
           p л
       .row
         .left
           p Какова средняя реализация 1 единицы мясо/молока?
         .right
-          input.input(v-model="valAverageRealization")
+          input.input(v-model="valAverageRealization", @change="openSpoilers()")
           p кг
 
     .title-prim(style="margin-top: 30px") Базовые допушения. Если вы с ними не согласны можете откорректировать:
-    .table
+    .table.spoiler
       .row
         .left
           p Сколько камер видеонаблюдения вы хотели бы установить
@@ -157,110 +168,110 @@
           p %
 
     .title-prim(style="margin-top: 30px") Что из новых технологий вы бы хотели применить у себя, отметьте галочкой:
-    .table
+    .table.spoiler
       .row
         .left
           p GPS-мониторинг техники
         .right
           input(type="checkbox", v-model="boolGPS")
-          .unit 60000 тг/шт
-          .overall {{multiGPS}}
+          .unit 60,000 тг/шт
+          .overall {{this.setFixed(multiGPS)}}
       .row
         .left
           p Автопилоты и курсоуказатели для сельхозтехники
         .right
           input(type="checkbox", v-model="boolPilot")
-          .unit 3500000 тг/шт
-          .overall {{multiPilot}}
+          .unit 3,500,000 тг/шт
+          .overall {{this.setFixed(multiPilot)}}
       .row
         .left
           p IP видеонаблюдение
         .right
           input(type="checkbox", v-model="boolVideo")
-          .unit 100000 тг/шт
-          .overall {{multiVideo}}
+          .unit 10,0000 тг/шт
+          .overall {{this.setFixed(multiVideo)}}
       .row
         .left
           p Контроль, учет движения зерна на току
         .right
           input(type="checkbox", v-model="boolControl")
-          .unit 3700000 тг/шт
-          .overall {{multiControl}}
+          .unit 3,700,000 тг/шт
+          .overall {{this.setFixed(multiControl)}}
       .row
         .left
           p Картирование полей на БПЛА
         .right
           input(type="checkbox", v-model="boolKart")
           .unit 112 тг/шт
-          .overall {{multiKart}}
+          .overall {{this.setFixed(multiKart)}}
       .row
         .left
           p Контроль вегетации (NDVI) на БПЛА
         .right
           input(type="checkbox", v-model="boolNDVI")
           .unit 150 тг/шт
-          .overall {{multiNDVI}}
+          .overall {{this.setFixed(multiNDVI)}}
       .row
         .left
           p Чипирование для идентификации КРС
         .right
           input(type="checkbox", v-model="boolChip")
-          .unit 1000 тг/шт
-          .overall {{multiChip}}
+          .unit 1,000 тг/шт
+          .overall {{this.setFixed(multiChip)}}
       .row
         .left
           p Системы для внутреннего мониторинга здоровья, активности и питания КРС
         .right
           input(type="checkbox", v-model="boolMonitor")
-          .unit 60000 тг/шт
-          .overall {{multiMonitor}}
+          .unit 60,000 тг/шт
+          .overall {{this.setFixed(multiMonitor)}}
       .row
         .left
           p Влагомеры
         .right
           input(type="checkbox", v-model="boolWater")
-          .unit 3000000 тг/шт
-          .overall {{multiWater}}
+          .unit 3,000,000 тг/шт
+          .overall {{this.setFixed(multiWater)}}
       .row
         .left
           p Расходомеры
         .right
           input(type="checkbox", v-model="boolRashod")
-          .unit 4500000 тг/шт
-          .overall {{multiRashod}}
+          .unit 4,500,000 тг/шт
+          .overall {{this.setFixed(multiRashod)}}
       .row
         .left
           p Автоматизация элеваторов и сушилок
         .right
           input(type="checkbox", v-model="boolElevator")
-          .unit 2000 тг/шт
-          .overall {{multiElevator}}
+          .unit 2,000 тг/шт
+          .overall {{this.setFixed(multiElevator)}}
       .row
         .left
           p Автоматизация уведомления об отключении оборудования
         .right
           input(type="checkbox", v-model="boolNotification")
-          .unit 60000 тг/шт
-          .overall {{multiNotification}}
+          .unit 60,000 тг/шт
+          .overall {{this.setFixed(multiNotification)}}
       .row
         .left
           p Программное обеспечение по управлению производством
         .right
           input(type="checkbox", v-model="boolSoftware")
           .unit 300 тг/шт
-          .overall {{multiSoftware}}
+          .overall {{this.setFixed(multiSoftware)}}
       .row
         .left
           p Внедрение программного обеспечения
         .right
           input(type="checkbox", v-model="boolProg")
           .unit 300 тг/шт
-          .overall {{multiProg}}
+          .overall {{this.setFixed(multiProg)}}
       .row
         .left
           p Сервисное обслуживание
         .right
-          .overall {{multiService}}
+          .overall {{this.setFixed(multiService)}}
 
     .btn-container
       button.btn(@click="calculate()") РАССЧИТАТЬ
@@ -310,6 +321,7 @@
 <script>
 import http from '@/services/httpQuery'
 import { Message } from 'element-ui'
+import $ from 'jquery'
 
 export default {
   name: 'calculator',
@@ -382,6 +394,11 @@ export default {
       recoupment: 0,
 
       checkCounter: 0,
+      form: {
+        name: '',
+        email: '',
+        phone: ''
+      }
     }
   },
   created() {
@@ -390,6 +407,7 @@ export default {
     calculate() {
       this.setDataInputs()
       this.calculateData()
+      this.postData()
     },
     setDataInputs() {
       this.valSowingArea = 5000
@@ -519,10 +537,10 @@ export default {
       let body = ''
       if (this.form.name.length > 0 && this.form.email.length > 0 && this.form.phone.length > 0) {
         body=`Имя=${this.form.name}&Почта=${this.form.email}&Телефон=${this.form.phone}`
+        body = this.setBody(body)
+        console.log(body)
         http.postMail('mail.php', body).then(() => {
-          this.form.name = ''
-          this.form.email = ''
-          this.form.phone = ''
+          this.nullForm()
         })
       } else {
         Message({
@@ -531,6 +549,68 @@ export default {
           showClose: true,
         })
       }
+    },
+    setBody(body) {
+      body += `&Какова у вас посевная площадь?=${this.valSowingArea}`
+      body += `&Какова у вас средняя реализация 1 тонны товарного зерна?=${this.valRealizationTonne}`
+      body += `&Количество голов?=${this.valHeads}`
+      body += `&Количество техники, которые необходимо контролировать?=${this.valVehicles}`
+      body += `&Количество электронных весов=${this.valElectronic}`
+      body += `&Объем хранения зерна на элеваторе=${this.valVolumeElevator}`
+      body += `&Какова средняя урожайность?=${this.valAverageYield}`
+      body += `&Какова средняя рефакция?=${this.valAverageRefaction}`
+      body += `&Каков средний надой/привес 1 головы в год? рефакция?=${this.valAverageNadoi}`
+      body += `&Какова средняя реализация 1 единицы мясо/молока?=${this.valAverageRealization}`
+
+      body += `&Сколько камер видеонаблюдения вы хотели бы установить=${this.valCameras}`
+      body += `&Средние расходы ТМЦ на 1 га (ГСМ, семена, химия)=${this.valAverageTMC}`
+      body += `&Количество краж зерна в машинах за 1 сезон=${this.valThiefSeason}`
+      body += `&Доля краж ТМЦ за 1 сезон=${this.valPercentTMCSeason}`
+      body += `&Количество вакансий на более квалифицированный персонал=${this.valVacancies}`
+      body += `&Расходы на 1 вакансию в месяц (зарплата с налогами, проживание, питание)=${this.valVacanciesMonth}`
+      body += `&Доля неээфективных расходов ТМЦ на 1 га, из за "человеческого фактора"=${this.valPercentNotEffectiveTMC}`
+      body += `&Сколько электронных весов вы бы хотели установить=${this.valDesireElectronic}`
+      body += `&Сколько влагомеров вы бы хотели установить на элеваторе=${this.valDesireWater}`
+      body += `&Сколько расходомеров вы бы хотели установить на элеваторе=${this.valDesireRashod}`
+      body += `&Контроль технологии позволит увеличить урожайность=${this.valPercentYield}`
+      body += `&Контроль технологии позволит увеличить надой/привес=${this.valPercentNadoi}`
+      body += `&Контроль технологии позволит сократить рефакцию=${this.valPercentRefaction}`
+      body += `&Контроль технологии позволит сократить расходы на ТМЦ=${this.valPercentTMC}`
+
+      body += `&GPS-мониторинг техники=${this.multiGPS}`
+      body += `&Автопилоты и курсоуказатели для сельхозтехники=${this.multiPilot}`
+      body += `&IP видеонаблюдение=${this.multiVideo}`
+      body += `&Контроль, учет движения зерна на току=${this.multiControl}`
+      body += `&Картирование полей на БПЛА=${this.multiKart}`
+      body += `&Контроль вегетации (NDVI) на БПЛА=${this.multiNDVI}`
+      body += `&Чипирование для идентификации КРС=${this.multiChip}`
+      body += `&Системы для внутреннего мониторинга здоровья, активности и питания КРС=${this.multiMonitor}`
+      body += `&Влагомеры=${this.multiWater}`
+      body += `&Расходомеры=${this.multiRashod}`
+      body += `&Автоматизация элеваторов и сушилок=${this.multiElevator}`
+      body += `&Автоматизация уведомления об отключении оборудования=${this.multiNotification}`
+      body += `&Программное обеспечение по управлению производством=${this.multiSoftware}`
+      body += `&Внедрение программного обеспечения=${this.multiProg}`
+      body += `&Сервисное обслуживание=${this.multiService}`
+
+      body += `&Итого расходов на новые технологии=${this.totalCost}`
+      body += `&Капитальные расходы=${this.capitalCost}`
+      body += `&Капитальные расходы=${this.constantCost}`
+      body += `&Итого доходов на новые технологии за сезон=${this.incomeTotal}`
+      body += `&Животноводство =${this.incomeAnimal}`
+      body += `&Растениеводство=${this.incomePlant}`
+      body += `&Человеческий фактор=${this.incomeHuman}`
+      body += `&Кражи=${this.incomeThief}`
+      body += `&Окупаемость (количество сезонов)=${this.recoupment}`
+      return body
+    },
+    nullForm() {
+      this.form.name = ''
+      this.form.email = ''
+      this.form.phone = ''
+    },
+    openSpoilers() {
+      $('.spoiler').slideDown(500)
     }
   }
 }

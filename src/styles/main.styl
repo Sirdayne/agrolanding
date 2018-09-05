@@ -458,10 +458,10 @@ h1, h2, h3, h4, h5, h6
   &-block
     float left
     width 100%
-    margin-top 70px
+    margin-top 30px
   &-inputs
     float left
-    max-width 450px
+    max-width 550px
     width 100%
     text-align center
     input
@@ -475,15 +475,18 @@ h1, h2, h3, h4, h5, h6
         width 100%
         margin-top 40px
         text-align center
-
   &-text
     float left
-    width calc(100% - 650px)
-    margin-left 200px
+    width calc(100% - 800px)
+    margin-left 250px
+    margin-top 50px
     font-size 16px
     line-height 20px
     color #000
     font-weight bold
+  p
+    float left
+    width 100%
 
 $CALC_HEIGHT = 30px
 
@@ -582,6 +585,9 @@ $CALC_HEIGHT = 30px
       width auto
       text-align right
 
+.spoiler
+  display block
+
 @media only screen and (max-width : 1600px)
   .effectiveness-text
     margin-top 80px
@@ -594,6 +600,16 @@ $CALC_HEIGHT = 30px
   .module-text
     width calc(100% - 540px)
     margin 160px 0 0 120px
+  .form-block
+    margin-top 20px
+  .form-inputs
+    width 100%
+    max-width none
+  .form-text
+    float left
+    width 100%
+    text-align center
+    margin 30px 0 0
 
 @media only screen and (max-width : 1000px)
   .section
@@ -670,22 +686,7 @@ $CALC_HEIGHT = 30px
     width 100%
     margin 30px 0 0
 
-  .form-text
-    width calc(100% - 500px)
-    margin-left 50px
-
 @media only screen and (max-width : 850px)
-  .form-block
-    margin-top 20px
-  .form-inputs
-    width 100%
-    max-width none
-  .form-text
-    float left
-    width 100%
-    text-align center
-    margin 30px 0 0
-
   .footer
     .footer-navigation
       display block

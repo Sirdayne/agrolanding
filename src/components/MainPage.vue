@@ -125,21 +125,6 @@
       .module-text
         h5(v-html="moduleTitle")
         p(v-html="moduleText")
-  .section.form#contact
-    .wrap
-      .title-prim ПРИСОЕДИНЯЙТЕСЬ! 
-      .title-sec УЖЕ БОЛЕЕ 1000 ПОЛЬЗОВАТЕЛЕЙ AGROSTREAM
-      .form-block
-        .form-inputs
-          .row
-            input.input(placeholder='ВАШЕ ИМЯ', v-model="form.name")
-          .row
-            input.input(placeholder='ВАШ E-MAIL', v-model="form.email")
-          .row
-            input.input(placeholder='ТЕЛЕФОН', v-model="form.phone")
-          .row-btn
-            button.btn(@click="postData()") ОТПРАВИТЬ
-        .form-text Бонус : 60 дней без абонентской платы при заказе </br>полного комплекта оборудования TerraPoint </br></br>Ваши данные не передаются третим лицам
   calculator
   .section.footer
     .wrap
