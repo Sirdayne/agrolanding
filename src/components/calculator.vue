@@ -405,7 +405,7 @@ export default {
   },
   methods: {
     calculate() {
-      this.setDataInputs()
+      //this.setDataInputs()
       this.calculateData()
       this.postData()
     },
