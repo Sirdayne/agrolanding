@@ -18,12 +18,14 @@
         h1.main-title НОВОСТИ
 
   .section.news(v-loading="loading")
-    .wrap
+    .wrap(v-if="news.length > 0")
       .new(v-for="item in news", @click="toNew(item.id)")
         .img-container
           img(:src="item.introImage")
         h4 {{ item.name }}
         p {{ item.intro }}
+    .wrap(v-else)
+      p Нет новостей
 
   .section.footer
     .wrap
@@ -97,7 +99,7 @@ export default {
     },
     getData() {
       this.loading = true
-      let endpoint = `http://agroplanapi-test.azurewebsites.net/api/news/`
+      let endpoint = `http://agroplanapi.azurewebsites.net/api/news/`
       http.get(endpoint).then((data) => {
         this.news = data
         this.loading = false

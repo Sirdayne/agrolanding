@@ -16,7 +16,7 @@
     img(:src="article.introImage")
     h1.main-new-title {{article.name}}
 
-  .section(v-loading="loading")
+  .section.news-con(v-loading="loading")
     .wrap
       p {{ article.content }}
       p(@click="toNews()", style="margin-top: 30px; text-decoration: underline; cursor: pointer;") назад в новости
@@ -86,7 +86,7 @@ export default {
     },
     getData() {
       this.loading = true
-      let endpoint = `http://agroplanapi-test.azurewebsites.net/api/news/` + this.$route.params.id
+      let endpoint = `http://agroplanapi.azurewebsites.net/api/news/` + this.$route.params.id
       http.get(endpoint).then((data) => {
         this.article = data
         this.loading = false
