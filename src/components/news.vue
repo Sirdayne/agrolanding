@@ -19,7 +19,8 @@
   .section.news(v-loading="loading")
     .wrap
       .new(v-for="item in news")
-        img(:src="item.introImage")
+        .img-container
+          img(:src="item.introImage")
         h4 {{ item.name }}
         p {{ item.intro }}
 
