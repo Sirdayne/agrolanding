@@ -12,18 +12,14 @@
         .nav(v-for="nav in navs", @click="toMainPage()") {{nav.text}}
         .nav(@click="toNews()") НОВОСТИ
 
-  .main-section.main-section-news#first
-    .shadow
-      .wrap
-        h1.main-title НОВОСТИ
+  .main-new(v-loading="loading")
+    img(:src="article.introImage")
+    h1.main-new-title {{article.name}}
 
-  .section.news(v-loading="loading")
+  .section(v-loading="loading")
     .wrap
-      .new(v-for="item in news", @click="toNew(item.id)")
-        .img-container
-          img(:src="item.introImage")
-        h4 {{ item.name }}
-        p {{ item.intro }}
+      p {{ article.content }}
+      p(@click="toNews()", style="margin-top: 30px; text-decoration: underline; cursor: pointer;") назад в новости
 
   .section.footer
     .wrap
@@ -44,7 +40,6 @@
 import http from '@/services/httpQuery'
 
 export default {
-  name: 'news',
   data () {
     return {
       navs: [
@@ -75,7 +70,7 @@ export default {
         },
       ],
       burgerActive: false,
-      news: [],
+      article: {},
       loading: true
     }
   },
@@ -89,17 +84,11 @@ export default {
     toNews() {
       this.$router.push('/news')
     },
-    toNew(id) {
-      this.$router.push(`/news/${id}`)
-    },
-    toggleBurger() {
-      this.burgerActive = !this.burgerActive
-    },
     getData() {
       this.loading = true
-      let endpoint = `http://agroplanapi-test.azurewebsites.net/api/news/`
+      let endpoint = `http://agroplanapi-test.azurewebsites.net/api/news/` + this.$route.params.id
       http.get(endpoint).then((data) => {
-        this.news = data
+        this.article = data
         this.loading = false
       }).catch(() => {
         this.loading = false
