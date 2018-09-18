@@ -25,6 +25,7 @@
         img(src="@/assets/logo-head.png")
       .navs(:class="{'vue-active': burgerActive}")
         .nav(v-for="nav in navs", @click="scrollTo(nav.url)") {{nav.text}}
+        .nav(@click="toNews()") НОВОСТИ
 
   .main-section#first
     .shadow
@@ -134,6 +135,8 @@
           span AGROSTREAM
         .footer-nav(v-for="nav in navs")
           p(@click="scrollTo(nav.url)") {{nav.text}}
+        .footer-nav
+          p(@click="toNews()") НОВОСТИ
       .footer-contacts
         .footer-contacts-left Республика Казахстан </br>г. Астана ул.Иманова 13, офис 309
         .footer-contacts-right Телефон: 8 7172 73 11 53</br>Email: info@agrostream.kz
@@ -233,6 +236,9 @@ export default {
     }
   },
   methods: {
+    toNews() {
+      this.$router.push('/news')
+    },
     changeModuleText(obj) {
       this.moduleTitle = obj.title
       this.moduleText = obj.text
