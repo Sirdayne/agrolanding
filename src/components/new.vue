@@ -1,6 +1,6 @@
 <template lang="pug">
 #main-page
-  .navigation#js-navigation
+  .navigation.navigation-active
     .wrap
       .nav-burger(@click="toggleBurger()", :class="{'vue-active': burgerActive}")
         .nav-line.nav-line-1
@@ -12,13 +12,12 @@
         .nav(v-for="nav in navs", @click="toMainPage()") {{nav.text}}
         .nav(@click="toNews()") НОВОСТИ
 
-  .main-new(v-loading="loading")
-    img(:src="article.introImage")
-    h1.main-new-title {{article.name}}
-
-  .section.news-con(v-loading="loading")
+  .section.main-new(v-loading="loading")
     .wrap
-      p {{ article.content }}
+      p
+        img(:src="article.introImage")
+        h1.main-new-title {{article.name}}
+        span {{ article.content }}
       p(@click="toNews()", style="margin-top: 30px; text-decoration: underline; cursor: pointer;") назад в новости
 
   .section.footer

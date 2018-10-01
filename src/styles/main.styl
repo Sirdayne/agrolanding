@@ -196,19 +196,18 @@ h1, h2, h3, h4, h5, h6
 .main-new
   float left
   width 100%
-  height 480px
+  margin-top 50px
   position relative
   img
     float left
+    max-width 600px
+    max-height 350px
     width 100%
-    height 480px
     object-fit cover
+    margin 0 50px 20px 0
   &-title
-    position absolute
-    top 200px
-    left 10%
-    font-size 54px
-    color $PRIM_COLOR
+    font-size 24px
+    margin-bottom 20px
     font-weight bold
 
 .navigation
@@ -220,11 +219,12 @@ h1, h2, h3, h4, h5, h6
   box-sizing border-box
   padding-bottom 10px
   z-index 2
-  &.js-active
-    position fixed
-    top 0
-    padding-top 10px
-    background rgba(0, 0, 0, 0.55)
+
+.navigation.js-active, .navigation-active
+  position fixed
+  top 0
+  padding-top 10px
+  background rgba(0, 0, 0, 0.55)
 
 .nav-burger
   float left
@@ -397,9 +397,8 @@ h1, h2, h3, h4, h5, h6
     width 100%
     margin-top 50px
     display flex
-    justify-content space-between
+    justify-content space-around
   &-block
-    float left
     width 30%
     max-width 300px
     .wrap-img
